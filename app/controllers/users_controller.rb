@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
 
+  def home
+    matching_users = User.all
+    @users = matching_users.order(:created_at)
+
+    render({ :template => "user_templates/all_users.html.erb"})
+  end
+  
   def index
     matching_users = User.all
     @users = matching_users.order(:created_at)

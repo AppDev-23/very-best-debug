@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get("/venues/:an_id", { :controller => "venues", :action => "show" })
   get("/update_venue/:an_id", { :controller => "venues", :action => "update" })
 
-  get("/delete_venue/:id_to_delete", { :controller => "venue", :action => "destroy" })
+  get("/delete_venue/:delete_id", { :controller => "venues", :action => "destroy" })
   
   get("/insert_comment_record", { :controller => "comments", :action => "create" })
  

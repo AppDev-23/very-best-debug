@@ -26,15 +26,27 @@ class VenuesController < ApplicationController
   end
   
   def update
-    the_id = params.fetch("venue_id")
+    the_id = params.fetch("an_id")
+    venue = Venue.where({ :id => the_id })
+    the_venue2 = venue.at(0)
 
-    @venue = Venue.where({ :id => the_id })
-    venue.address = params.fetch("query_address")
-    venue.name = params.fetch("Query_name")
-    venue.neighborhood = params.fetch("query_neighborhood")
-    venue.save
+    i_address = params.fetch("query_address")
+    i_name = params.fetch("query_name")
+    i_neighborhood = params.fetch("query_neighborhood")
+
+    the_venue2.address = i_address
+    the_venue2.name = i_name
+    the_venue2.neighborhood = i_neighborhood
+    the_venue2.save
+
+
+
+    # venue.address = params.fetch("query_address")
+    # venue.name = params.fetch("Query_name")
+    # venue.neighborhood = params.fetch("query_neighborhood")
+    # venue.save
     
-    redirect_to("/venues/#{venue.id}")
+    redirect_to("/venues/#{the_venue2.id.to_s}")
   end
 
   def destroy
